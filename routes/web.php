@@ -28,3 +28,10 @@ Route::put('/board/{id}', 'BoardController@updateBoard');
 Route::get('/reset', function (){
     Session::flush();
 });
+
+Route::post('/board/{id}/end', 'BoardController@endGame');
+
+Route::post('/board/{id}/name', 'BoardController@setName');
+
+Route::get('/leaderboard', 'LeaderboardController@list');
+// Route::get('/board/leaders', 'BoardController@leaders');

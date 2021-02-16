@@ -12,6 +12,7 @@
     </head>
     <body>
         <span id="app">
+            <leaderboard></leaderboard>
             <board></board>
         </span>
         <script src="{{ asset('/js/app.js') }}"></script>

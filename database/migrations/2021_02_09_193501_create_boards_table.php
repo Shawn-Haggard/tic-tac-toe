@@ -16,6 +16,8 @@ class CreateBoardsTable extends Migration
         Schema::create('boards', function (Blueprint $table) {
             $table->id();
             $table->string('code', 8);
+            $table->string('x_name', 16);
+            $table->string('o_name', 16);
             $table->boolean('active')->default(true);
             $table->tinyInteger('turn')->default(-1);
             $table->tinyInteger('winner')->default(0);
