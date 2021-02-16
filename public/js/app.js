@@ -1962,6 +1962,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -20952,84 +20953,92 @@ var render = function() {
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _c("label", { attrs: { for: "existing_boards" } }, [
-              _vm._v("Pick an existing game")
-            ]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.code,
-                    expression: "code"
-                  }
-                ],
-                attrs: { id: "existing_boards" },
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.code = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  }
-                }
-              },
-              _vm._l(_vm.boards, function(board, index) {
-                return _c("option", { domProps: { value: index } }, [
-                  _vm._v(
-                    "\n          " +
-                      _vm._s(index) +
-                      " (" +
-                      _vm._s(_vm.tokenToChar(board.token)) +
-                      ")\n      "
+            _vm.mode == "vs"
+              ? _c("div", [
+                  _c("label", { attrs: { for: "existing_boards" } }, [
+                    _vm._v("Pick an existing game")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.code,
+                          expression: "code"
+                        }
+                      ],
+                      attrs: { id: "existing_boards" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.code = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    _vm._l(_vm.boards, function(board, index) {
+                      return _c("option", { domProps: { value: index } }, [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(index) +
+                            " (" +
+                            _vm._s(_vm.tokenToChar(board.token)) +
+                            ")\n        "
+                        )
+                      ])
+                    }),
+                    0
                   )
                 ])
-              }),
-              0
-            ),
+              : _vm._e(),
             _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.code,
-                  expression: "code"
-                }
-              ],
-              domProps: { value: _vm.code },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.code = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                on: {
-                  click: function($event) {
-                    return _vm.join()
-                  }
-                }
-              },
-              [_vm._v("Join")]
-            ),
-            _vm._v(" or "),
+            _vm.mode == "vs"
+              ? _c("span", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.code,
+                        expression: "code"
+                      }
+                    ],
+                    domProps: { value: _vm.code },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.code = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      on: {
+                        click: function($event) {
+                          return _vm.join()
+                        }
+                      }
+                    },
+                    [_vm._v("Join")]
+                  ),
+                  _vm._v(" or ")
+                ])
+              : _vm._e(),
             _c(
               "button",
               {

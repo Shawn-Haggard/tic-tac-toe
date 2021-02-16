@@ -33,14 +33,15 @@
       <div v-if="code && mode === 'vs'">
       Playing game: <strong>{{ code }}</strong>
       </div>
-      <label for="existing_boards">Pick an existing game</label>    
-      <select v-model="code" id="existing_boards">
-        <option v-for="(board, index) in boards" :value="index">
-            {{ index }} ({{ tokenToChar(board.token) }})
-        </option>
-      </select>
-
-      <input v-model='code' /> <button v-on:click="join();">Join</button> or <button v-on:click="newGame();">New Game</button>
+      <div v-if="mode == 'vs'">
+        <label for="existing_boards">Pick an existing game</label>    
+        <select v-model="code" id="existing_boards">
+          <option v-for="(board, index) in boards" :value="index">
+              {{ index }} ({{ tokenToChar(board.token) }})
+          </option>
+        </select>
+      </div>
+      <span v-if="mode == 'vs'"><input v-model='code' /> <button v-on:click="join();">Join</button> or </span><button v-on:click="newGame();">New Game</button>
       <template  v-for="row in 3">
         <div class="board-row">
           <template v-for="col in 3">
